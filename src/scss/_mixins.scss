@@ -1,0 +1,20 @@
+@mixin button($color: green) {
+	cursor: pointer;
+		border-radius: 4px;
+		margin: 0.2rem;
+		border: 1px solid transparent;
+		& > i {
+			color: $accentDark;
+			padding: 0.2rem;
+		}
+		&:hover {
+		border: 1px solid $accentDark;
+		background-color: darken($color: $accentLight, $amount: 5);
+			& > i {
+				color: lighten($color: $accentDark, $amount: 5);
+			}
+		}
+		&:active > i {
+			color: green;
+		}
+}

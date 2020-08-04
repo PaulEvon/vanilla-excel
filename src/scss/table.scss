@@ -1,0 +1,39 @@
+@import "variables";
+@import "mixins";
+
+.excel__table {
+	
+	overflow: auto;
+	table, th, td {
+		border: 1px solid $accentDark;
+		border-spacing: 0;
+		border-collapse: collapse;
+		font-weight: 600;
+		font-size: 1.6rem;
+	}
+	th, td {
+		height: 2.4rem;
+		width: $cell-width;
+		min-width: $cell-width;
+		max-width: $cell-width;
+	}
+	th, td:nth-child(1) {  
+		cursor: cell;
+		text-align: center;
+		background-color: #eee;
+	}
+	td:not(:first-child) {
+		input {
+			padding: 2px;
+			outline: none;
+			border: 2px solid transparent;
+			width: 100%;
+			&:hover {
+				border: 2px solid #000;
+			}
+			&:focus {
+				border: 2px solid $accentDark;
+			}
+		}
+	}
+}
