@@ -1,8 +1,7 @@
 @import "variables";
 @import "mixins";
 
-.excel__table {
-	
+.excel__table {	
 	overflow: auto;
 	table, th, td {
 		border: 1px solid $accentDark;
@@ -12,7 +11,7 @@
 		font-size: 1.6rem;
 	}
 	th, td {
-		height: 2.4rem;
+		height: $cell-height;
 		width: $cell-width;
 		min-width: $cell-width;
 		max-width: $cell-width;
@@ -24,7 +23,8 @@
 	}
 	td:not(:first-child) {
 		input {
-			padding: 2px;
+			height: $cell-height;
+			padding: 1px;
 			outline: none;
 			border: 2px solid transparent;
 			width: 100%;

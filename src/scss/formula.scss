@@ -8,11 +8,10 @@
 	align-items: center;
 	border-bottom: 1px solid $accentDark;
 	&-info {
-		width: $cell-width;
+		flex: 0 0 $cell-width;
 		font-size: 1.6rem;
 		font-style: italic;
 		font-weight: 600;
-		margin-left: 3px;
 		text-align: center;
 		color: #000;
 	}
