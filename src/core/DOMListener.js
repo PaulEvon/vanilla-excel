@@ -29,5 +29,10 @@ export class DomListener {
 }
 const listenersReducer = {
 	'input': "onInput",
-	'click': "onClick"
+	'click': "onClick",
+	'mousedown': "onMouseDown",
+	"mousemove": "onMouseMove",
+	"mouseup": "onMouseUp",
+	"dblclick": "onDbClick",
+	"onfocusout": "onFocusOut"
 }

@@ -6,34 +6,39 @@ const colsCount = CODES["Z"] - CODES["A"]
 function toChar(index) {
 	return String.fromCharCode(CODES["A"] + index)
 }
-function createCell() {
-	return `<input type="text">`
-}
-function createCol(i) {
+function createCell(index) {
 	const cols = []
-	cols.push(`<td>${i + 1}</td>`)
+	cols.push(`
+		<td data-type="resizeble">
+			${index + 1}
+			<div class="excel__table-row-resize" data-resize="row">
+		</td>`)
 	for (let i = 1; i <= colsCount + 1; i++) {
-		cols.push(`<td>${createCell()}</td>`)
+		cols.push(`
+		<td>
+			<div class="excel__table-cell" contenteditable=false></div>	
+		</td>`)
 	}
 	return cols.join('')
-}
-function createRow(i) {
-	return `<tr>${createCol(i)}</tr>`
 }
 function createFirstRow() {
 	const cols = []
 	cols.push(`<th></th>`)
 	for (let i = 0; i <= colsCount; i++) {
-		cols.push(`<th>${toChar(i)}</th>`)
+		cols.push(`
+		<th data-type="resizeble">
+			${toChar(i)}
+			<div class="excel__table-col-resize" data-resize="col">
+			</div>
+		</th>`)
 	}
 	return cols.join('')
 }
 export function createTable(rowsCount = 30) {
-
 	const rows = []
 	rows.push(createFirstRow())
 	for (let i = 0; i < rowsCount; i++) {
-		rows.push(createRow(i))
+		rows.push(`<tr>${createCell(i)}</tr>`)
 	}
-	return rows.join('')
+	return `<table>${rows.join('')}</table>`
 }
