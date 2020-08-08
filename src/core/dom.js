@@ -4,6 +4,14 @@ class Dom {
 			? document.querySelector(selector)
 			: selector)
 	}
+	addClass(className) {
+		this.$el.classList.add(className)
+		return this
+	}
+	removeClass(className) {
+		this.$el.classList.remove(className)
+		return this
+	}
 	html(html) {
 		if (typeof html === 'string') {
 			this.$el.innerHTML = html
@@ -21,6 +29,9 @@ class Dom {
 	off(eventType, callback) {
 		this.$el.removeEventListener(eventType, callback)
 	}
+	find(selector) {
+		return $(this.$el.querySelector(selector))
+	}
 	css(styles = {}) {
 		Object.keys(styles).forEach(key => {
 			this.$el.style[key] = styles[key]
@@ -29,6 +40,7 @@ class Dom {
 	}
 }
 export function $(selector) {
+
 	return new Dom(selector)
 }
 $.create = (tagName, classes = '') => {

@@ -6,17 +6,17 @@ const colsCount = CODES["Z"] - CODES["A"]
 function toChar(index) {
 	return String.fromCharCode(CODES["A"] + index)
 }
-function createCell(index) {
+function createCell(rowIndex) {
 	const cols = []
 	cols.push(`
 		<td data-type="resizeble">
-			${index + 1}
+			${rowIndex + 1}
 			<div class="excel__table-row-resize" data-resize="row">
 		</td>`)
 	for (let i = 1; i <= colsCount + 1; i++) {
 		cols.push(`
 		<td>
-			<div class="excel__table-cell" contenteditable=false></div>	
+			<div class="excel__table-cell" contenteditable=false data-cellId=${toChar(i - 1)}${rowIndex + 1}></div>	
 		</td>`)
 	}
 	return cols.join('')

@@ -1,23 +1,37 @@
 import { ExcelComponent } from "../../core/ExcelComponent";
 import { createTable } from "./table-template";
 import { resizeHandler } from "./table-resize";
-import { shouldResize } from "./table-functions";
+import { TableSelection } from "./table-selection";
+import { $ } from "../../core/dom";
 
 export class Table extends ExcelComponent {
 	static className = "excel__table";
-	constructor($root) {
+	constructor($root, options) {
 		super($root, {
-			listeners: ['mousedown', 'dblclick',],
-
+			name: "Table",
+			listeners: ['mousedown', 'dblclick'],
+			...options
 		})
 	}
-	toHTML = () => createTable()
-
-	onMouseDown(event) {
-		if (shouldResize(event)) {
-			resizeHandler(event)
-		}
+	state = {
+		group: []
 	}
+	toHTML = () => createTable()
+	prepare() {
+	}
+	init() {
+		super.init()
+		const $cell = $(this.$root).find('[data-cellId = "A1"]').$el
+		TableSelection(this.state.group, $cell)
+		this.$on('Formula:input', (text) => {
+			console.log("text:", text)
+		})
+	}
+	onMouseDown(event) {
+		resizeHandler(event)
+		// this.state.group = TableSelection(this.state.group, event.target)
+	}
+
 	onDbClick(event) {
 		if (event.target.isContentEditable === false) {
 			event.target.contentEditable = true;

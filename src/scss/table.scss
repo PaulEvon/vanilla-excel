@@ -27,7 +27,6 @@
 	td:not(:first-child) {
 		.excel__table-cell {
 			height: 100%;
-			outline: none;
 			border: 2px solid transparent;
 			width: 100%;
 			&:hover {
@@ -62,4 +61,7 @@
 		cursor: row-resize;
 	}
 	  
+}
+.selected {
+	outline: 2px solid blue;
 }

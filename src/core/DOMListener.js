@@ -1,4 +1,6 @@
 import { $ } from "./dom"
+import { listenersReducer } from "./event-table"
+
 
 export class DomListener {
 	constructor($root, listeners = []) {
@@ -26,13 +28,4 @@ export class DomListener {
 			$(this.$root).off(listener, this[callback])
 		})
 	}
-}
-const listenersReducer = {
-	'input': "onInput",
-	'click': "onClick",
-	'mousedown': "onMouseDown",
-	"mousemove": "onMouseMove",
-	"mouseup": "onMouseUp",
-	"dblclick": "onDbClick",
-	"onfocusout": "onFocusOut"
 }
